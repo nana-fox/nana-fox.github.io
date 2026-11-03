@@ -248,3 +248,13 @@ kbd { padding: .05rem .4rem; border: 1px solid var(--line); border-bottom-width:
 
 :lang(en) .hero h1 { letter-spacing: -.035em; }
 :lang(en) .section-head h2, :lang(en) .split h2, :lang(en) .cta-band h2 { letter-spacing: -.025em; }
+
+/* Hero, simplified */
+.hero { padding-top: 56px; }
+.release-pill { display: inline-flex; align-items: center; gap: .6rem; margin-bottom: 1.8rem; padding: .3rem .9rem .3rem .3rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, .75); color: var(--body); font-size: .88rem; text-decoration: none; }
+.release-pill b { padding: .12rem .6rem; border-radius: 999px; background: var(--green); color: #fff; font-size: .78rem; font-weight: 650; }
+.release-pill span { color: var(--green-dark); }
+.release-pill:hover, .release-pill:focus-visible { border-color: rgba(14, 111, 91, .35); color: var(--ink); }
+.hero .lede { margin-top: 1.2rem; }
+.hero .actions { margin-top: 2.2rem; }
+.fine-print { margin: 1.1rem 0 0; color: var(--muted); font-size: .88rem; }
