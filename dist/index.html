@@ -4,52 +4,217 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NanaFlow — 专注，不必更复杂</title>
-  <meta name="description" content="NanaFlow 是一款原生 macOS 专注计时器，在菜单栏随时启用，并在同一个窗口中查看统计。">
+  <meta name="description" content="NanaFlow 是一款原生 macOS 专注计时器：紧凑窗口、菜单栏倒计时、日周月年统计，数据保存在本机。免费，无需账号。">
+  <link rel="canonical" href="https://nana-fox.github.io/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://nana-fox.github.io/">
+  <link rel="alternate" hreflang="en" href="https://nana-fox.github.io/en/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NanaFlow">
+  <meta property="og:title" content="NanaFlow — 专注，不必更复杂">
+  <meta property="og:description" content="原生 macOS 专注计时器。菜单栏随手开始，在一个窗口里看清节奏。免费，无需账号。">
+  <meta property="og:url" content="https://nana-fox.github.io/">
+  <meta property="og:image" content="https://nana-fox.github.io/assets/og-zh.png">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0e6f5b">
   <link rel="icon" href="/assets/nanaflow-icon.png">
+  <link rel="apple-touch-icon" href="/assets/nanaflow-icon.png">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></symbol>
+      <symbol id="i-reset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.4-5.7L4 8.6"/><path d="M4 4v4.6h4.6"/></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 20h16"/><rect x="5" y="13" width="3.6" height="7"/><rect x="10.2" y="9" width="3.6" height="11"/><rect x="15.4" y="4" width="3.6" height="16"/></symbol>
+      <symbol id="i-more" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="12" cy="19" r="1.9"/></symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="6.5" y="4.5" width="3.6" height="15" rx="1"/><rect x="13.9" y="4.5" width="3.6" height="15" rx="1"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></symbol>
+      <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4l-8 8 8 8"/></symbol>
+      <symbol id="i-next" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></symbol>
+      <symbol id="i-timer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 13.5V9.5M9.5 2.5h5"/></symbol>
+      <symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M5.5 18.5l1.7-1.7M16.8 7.2l1.7-1.7"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.1"/></symbol>
+      <symbol id="i-power" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v8"/><path d="M6.3 6.8a8 8 0 1 0 11.4 0"/></symbol>
+      <symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2.5 9a14 14 0 0 1 19 0M5.8 12.5a9 9 0 0 1 12.4 0M9.2 16a4 4 0 0 1 5.6 0"/><circle cx="12" cy="19.2" r=".8" fill="currentColor"/></symbol>
+      <symbol id="i-battery" viewBox="0 0 28 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="6.5" width="22" height="11" rx="3"/><rect x="3.5" y="8.5" width="15" height="7" rx="1.5" fill="currentColor" stroke="none"/><path d="M25.5 10v4" stroke-linecap="round"/></symbol>
+      <symbol id="i-window" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18"/></symbol>
+      <symbol id="i-menubar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3.5" width="18" height="5" rx="1.5"/><path d="M13 11.5h7v8.5h-7z"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
+    </defs>
+  </svg>
+
   <a class="skip-link" href="#main">跳到主要内容</a>
-  <div class="home-atmosphere">
+
+  <div class="home-hero">
     <header class="site-header">
       <nav class="shell nav" aria-label="主要导航">
         <a class="brand" href="/" aria-label="NanaFlow 首页"><img src="/assets/nanaflow-icon.png" alt=""><span>NanaFlow</span></a>
-        <div class="nav-links"><a href="#features">功能</a><a href="/privacy/">隐私</a><a href="/support/">支持</a><a class="language" href="/en/" lang="en">English</a></div>
+        <div class="nav-links"><a href="#features">功能</a><a href="/support/">支持</a><a href="/privacy/">隐私</a><a class="language" href="/en/" lang="en">English</a><a class="nav-cta" href="https://apps.apple.com/cn/app/nanaflow/id6814738160">下载</a></div>
       </nav>
     </header>
 
     <main id="main">
       <section class="shell hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <h1 id="hero-title">专注，不必更复杂。</h1>
-          <p class="lede">NanaFlow 是一款原生 macOS 专注计时器，<br>在菜单栏随时启用，并在一个窗口中查看统计。</p>
-          <div class="actions">
-            <a class="button" href="https://apps.apple.com/cn/app/nanaflow/id6814738160">在 Mac App Store 免费下载</a>
-            <a class="text-link" href="https://github.com/nana-fox/NanaFlow">在 GitHub 查看 <span aria-hidden="true">→</span></a>
-          </div>
-          <p class="release-status">适用于 macOS 15 及以上 · 免费 · 无需注册账号</p>
-          <p class="release-status" id="release-status">1.0.1 已在 Mac App Store 提供。<a href="/support/#updates">查看更新说明</a></p>
+        <h1 id="hero-title">专注，不必更复杂。</h1>
+        <p class="lede">NanaFlow 是一款原生 macOS 专注计时器。在菜单栏随手开始，<br>在一个紧凑窗口里看清自己的节奏。</p>
+        <div class="actions">
+          <a class="button" href="https://apps.apple.com/cn/app/nanaflow/id6814738160">在 Mac App Store 免费下载</a>
+          <a class="text-link" href="#features">了解功能 <span aria-hidden="true">↓</span></a>
         </div>
+        <ul class="meta-row" aria-label="基本信息"><li>macOS 15 及以上</li><li>免费</li><li>无需注册账号</li><li>数据保存在本机</li></ul>
+        <p class="release-status" id="release-status">1.0.1 现已在 Mac App Store 提供 · <a href="#whats-new">查看新功能</a></p>
 
-        <div class="product-stage">
-          <img class="product-shot" src="/assets/nanaflow-timer.png" alt="NanaFlow 主窗口，显示 18 分 07 秒及暂停控制">
-          <figure class="menu-callout">
-            <div class="menu-crop"><img src="/assets/nanaflow-menubar.png" alt="NanaFlow 在 macOS 菜单栏中显示 25 分钟倒计时"></div>
-            <figcaption>在菜单栏<br>随时掌控专注</figcaption>
-          </figure>
+        <div class="scene" role="img" aria-label="示意图：macOS 菜单栏显示 NanaFlow 倒计时 18:07 和今日完成数 3，下拉菜单展开；桌面上的 NanaFlow 窗口正在专注计时">
+          <div class="mac-bar" aria-hidden="true">
+            <div class="mac-bar-left"><b>NanaFlow</b><span>文件</span><span>编辑</span><span>窗口</span></div>
+            <div class="mac-bar-right"><span class="status-item">18:07<i></i>3</span><svg class="opt"><use href="#i-wifi"/></svg><svg class="opt" style="width:22px"><use href="#i-battery"/></svg><span class="opt">11月3日 周二 09:41</span></div>
+          </div>
+          <div class="menu-pop" aria-hidden="true">
+            <div class="dim">专注 · 18:07</div>
+            <div><svg><use href="#i-pause"/></svg>暂停</div>
+            <div><svg><use href="#i-timer"/></svg>隐藏计时器</div>
+            <div class="hl"><svg><use href="#i-chart"/></svg>显示统计</div>
+            <hr>
+            <div><svg><use href="#i-next"/></svg>跳到休息</div>
+            <div><svg><use href="#i-reset"/></svg>重新开始</div>
+            <hr>
+            <div><svg><use href="#i-timer"/></svg>计时设置…</div>
+            <div><svg><use href="#i-gear"/></svg>设置…</div>
+            <div><svg><use href="#i-info"/></svg>关于 NanaFlow</div>
+            <hr>
+            <div><svg><use href="#i-power"/></svg>退出 NanaFlow</div>
+          </div>
+          <div class="app-window" aria-hidden="true">
+            <div class="win-top"><span class="win-close"><svg><use href="#i-x"/></svg></span><span class="win-tools"><svg><use href="#i-reset"/></svg><svg><use href="#i-chart"/></svg><svg><use href="#i-more"/></svg></span></div>
+            <div class="win-title">NanaFlow</div>
+            <div class="win-time">18:07</div>
+            <div class="win-dots"><i class="done"></i><i class="done"></i><i class="now"></i><i></i></div>
+            <div class="win-play"><svg><use href="#i-pause"/></svg></div>
+          </div>
+          <p class="scene-note" aria-hidden="true">示意图，数据为演示</p>
         </div>
       </section>
     </main>
   </div>
 
-  <section class="feature-strip" id="features" aria-label="核心功能">
-    <div class="shell feature-grid">
-      <article class="feature"><img class="feature-icon" src="/assets/icons/window.svg" alt=""><h2>单窗口</h2><p>计时、统计、设置都在一个窗口，简单直观。</p></article>
-      <article class="feature"><img class="feature-icon" src="/assets/icons/menu.svg" alt=""><h2>菜单栏</h2><p>一键开始或暂停，不打断你的节奏。</p></article>
-      <article class="feature"><img class="feature-icon" src="/assets/icons/chart-bar.svg" alt=""><h2>本地记录</h2><p>专注数据保存在本地，只属于你。</p></article>
+  <section class="section" id="features" aria-labelledby="features-title">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">为什么是 NanaFlow</p>
+        <h2 id="features-title">打开、开始、专注，然后回到工作。</h2>
+        <p>没有项目、标签和待办清单要先整理。NanaFlow 只做计时这一件事，并把它做得安静、顺手。</p>
+      </div>
+      <div class="trio">
+        <article class="card"><div class="icon"><svg><use href="#i-window"/></svg></div><h3>一个紧凑窗口</h3><p>计时与统计在同一个小窗口里切换，不占用屏幕，也不打扰正在做的事。</p></article>
+        <article class="card"><div class="icon"><svg><use href="#i-menubar"/></svg></div><h3>菜单栏随手可用</h3><p>倒计时常驻菜单栏，可同时显示今天完成的专注数。开始、暂停、跳过都在一次点击之内。</p></article>
+        <article class="card"><div class="icon"><svg><use href="#i-lock"/></svg></div><h3>数据只在你的 Mac 上</h3><p>无需注册，没有广告和第三方统计。专注记录与设置都保存在本机。</p></article>
+      </div>
     </div>
   </section>
 
-  <footer class="site-footer"><div class="shell footer-row"><span>© 2026 NanaFlow</span><div class="footer-links"><a href="/privacy/">隐私</a><a href="/support/">支持</a><a href="https://github.com/nana-fox/NanaFlow">GitHub</a></div></div></footer>
+  <section class="section" aria-labelledby="timer-title">
+    <div class="shell split">
+      <div class="split-copy">
+        <p class="eyebrow">计时</p>
+        <h2 id="timer-title">经典节奏，随你调整。</h2>
+        <p>默认 25 分钟专注、5 分钟短休息、30 分钟长休息。窗口下方的小圆点告诉你这一轮走到了哪里。</p>
+        <ul class="checks">
+          <li>暂停、继续、跳过、重新开始</li>
+          <li>可选择自动开始下一段专注或休息</li>
+          <li>阶段结束时用提示音和系统通知提醒你</li>
+          <li>应用内快捷键：<kbd>空格</kbd> 开始或暂停，<kbd>⌘</kbd> <kbd>,</kbd> 打开设置</li>
+        </ul>
+      </div>
+      <div class="visual" role="img" aria-label="示意图：NanaFlow 窗口显示 25:00，等待开始">
+        <div class="app-window" aria-hidden="true">
+          <div class="win-top"><span class="win-close"><svg><use href="#i-x"/></svg></span><span class="win-tools"><svg><use href="#i-reset"/></svg><svg><use href="#i-chart"/></svg><svg><use href="#i-more"/></svg></span></div>
+          <div class="win-title">NanaFlow</div>
+          <div class="win-time">25:00</div>
+          <div class="win-dots"><i class="done"></i><i class="done"></i><i class="now"></i><i></i></div>
+          <div class="win-play"><svg style="margin-left:3px"><use href="#i-play"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="stats-title">
+    <div class="shell split reverse">
+      <div class="split-copy">
+        <p class="eyebrow">统计</p>
+        <h2 id="stats-title">看清自己的节奏。</h2>
+        <p>点一下柱状图按钮，在同一个窗口切换日、周、月、年。日视图按 24 小时，周视图按 7 天，月视图按实际天数，年视图按 12 个月展示。</p>
+        <ul class="checks">
+          <li>在专注次数与净专注时长之间切换</li>
+          <li>悬停柱形查看对应数值</li>
+          <li>只统计完成的专注，休息和中途放弃不计入</li>
+        </ul>
+      </div>
+      <div class="visual" role="img" aria-label="示意图：NanaFlow 周统计，周四完成 7 次专注">
+        <div class="app-window" aria-hidden="true">
+          <svg class="stats-back"><use href="#i-back"/></svg>
+          <div class="stats-seg"><span>日</span><span class="on">周</span><span>月</span><span>年</span></div>
+          <div class="stats-title">本周 · 27 次</div>
+          <div class="stats-tip">7 次</div>
+          <div class="stats-bars"><i style="--v:57%"></i><i style="--v:86%"></i><i style="--v:43%"></i><i style="--v:100%"></i><i style="--v:71%"></i><i style="--v:29%"></i><i style="--v:0%"></i></div>
+          <div class="stats-labels"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+          <div class="stats-metric"><span class="on">次数</span><span>时长</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="sound-title">
+    <div class="shell split">
+      <div class="split-copy">
+        <p class="eyebrow">提示音</p>
+        <h2 id="sound-title">专注和休息，各有各的声音。</h2>
+        <p>为专注结束和休息结束分别挑一个提示音，一听就知道接下来该做什么。11 种内置声音，统一的音量档位，也可以选择不发声。</p>
+      </div>
+      <div class="visual" role="img" aria-label="示意图：专注结束选择唱钵，休息结束选择风铃">
+        <div class="sound-panel" aria-hidden="true">
+          <div class="sound-row"><h3>专注结束</h3><div class="chips"><span>闹钟</span><span>铃声</span><span>铃铛</span><span class="on">唱钵</span><span>风铃</span><span>和弦</span><span>竖琴</span><span>重要事件</span><span>脉冲</span><span>波纹</span><span>吹口哨</span><span>无</span></div></div>
+          <div class="sound-row"><h3>休息结束</h3><div class="chips"><span>闹钟</span><span>铃声</span><span>铃铛</span><span>唱钵</span><span class="on">风铃</span><span>和弦</span><span>竖琴</span><span>重要事件</span><span>脉冲</span><span>波纹</span><span>吹口哨</span><span>无</span></div></div>
+          <div class="volume">音量<b></b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="specs-title">
+    <div class="shell">
+      <div class="section-head"><p class="eyebrow">一目了然</p><h2 id="specs-title">简单，但不简陋。</h2></div>
+      <div class="specs">
+        <div class="spec"><strong>25 / 5 / 30</strong><span>默认专注、短休息、长休息（分钟）</span></div>
+        <div class="spec"><strong>日 · 周 · 月 · 年</strong><span>四种统计视图</span></div>
+        <div class="spec"><strong>11 种</strong><span>内置提示音，专注与休息分别选择</span></div>
+        <div class="spec"><strong>0 个账号</strong><span>不注册、无广告、无第三方统计</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="whats-new" aria-labelledby="new-title">
+    <div class="shell whatsnew">
+      <div><p class="eyebrow">版本 1.0.1</p><h2 id="new-title" style="margin:0;font-size:clamp(2rem,3.6vw,2.75rem);letter-spacing:-.04em;line-height:1.15">新功能</h2><p style="color:var(--body)">2026 年 11 月 2 日发布。通过 Mac App Store 自动更新即可获得。</p></div>
+      <ul>
+        <li>统计可以在专注次数与净专注时长之间切换</li>
+        <li>专注和休息可以分别选择提示音，音量档位统一</li>
+        <li>改进阶段结束通知的调度，重新打开应用后也能正确恢复</li>
+        <li>修正紧凑窗口外缘与拖动交互</li>
+        <li>完善英文菜单和“关于”页的版本显示</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="shell">
+      <img src="/assets/nanaflow-icon.png" alt="">
+      <h2 id="cta-title">今天的第一个 25 分钟，从这里开始。</h2>
+      <p>免费 · macOS 15 及以上 · 无需注册账号</p>
+      <a class="button" href="https://apps.apple.com/cn/app/nanaflow/id6814738160">在 Mac App Store 免费下载</a>
+    </div>
+  </section>
+
+  <footer class="site-footer"><div class="shell footer-row"><span>© 2026 NanaFlow</span><div class="footer-links"><a href="/support/">支持</a><a href="/privacy/">隐私</a><a href="https://github.com/nana-fox/NanaFlow">GitHub</a></div></div></footer>
 </body>
 </html>

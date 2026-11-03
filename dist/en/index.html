@@ -4,52 +4,217 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NanaFlow — Focus, without the complexity</title>
-  <meta name="description" content="NanaFlow is a native macOS focus timer that stays close in the menu bar and keeps statistics in the same window.">
+  <meta name="description" content="NanaFlow is a native macOS focus timer: a compact window, a menu-bar countdown and day/week/month/year statistics, with data kept on your Mac. Free, no account.">
+  <link rel="canonical" href="https://nana-fox.github.io/en/">
+  <link rel="alternate" hreflang="en" href="https://nana-fox.github.io/">
+  <link rel="alternate" hreflang="en" href="https://nana-fox.github.io/en/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NanaFlow">
+  <meta property="og:title" content="NanaFlow — Focus, without the complexity">
+  <meta property="og:description" content="A native macOS focus timer. Start from the menu bar, see your rhythm in one window. Free, no account.">
+  <meta property="og:url" content="https://nana-fox.github.io/en/">
+  <meta property="og:image" content="https://nana-fox.github.io/assets/og-en.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0e6f5b">
   <link rel="icon" href="/assets/nanaflow-icon.png">
+  <link rel="apple-touch-icon" href="/assets/nanaflow-icon.png">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="home-atmosphere">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></symbol>
+      <symbol id="i-reset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.4-5.7L4 8.6"/><path d="M4 4v4.6h4.6"/></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 20h16"/><rect x="5" y="13" width="3.6" height="7"/><rect x="10.2" y="9" width="3.6" height="11"/><rect x="15.4" y="4" width="3.6" height="16"/></symbol>
+      <symbol id="i-more" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="12" cy="19" r="1.9"/></symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="6.5" y="4.5" width="3.6" height="15" rx="1"/><rect x="13.9" y="4.5" width="3.6" height="15" rx="1"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></symbol>
+      <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4l-8 8 8 8"/></symbol>
+      <symbol id="i-next" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></symbol>
+      <symbol id="i-timer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 13.5V9.5M9.5 2.5h5"/></symbol>
+      <symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M5.5 18.5l1.7-1.7M16.8 7.2l1.7-1.7"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.1"/></symbol>
+      <symbol id="i-power" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v8"/><path d="M6.3 6.8a8 8 0 1 0 11.4 0"/></symbol>
+      <symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2.5 9a14 14 0 0 1 19 0M5.8 12.5a9 9 0 0 1 12.4 0M9.2 16a4 4 0 0 1 5.6 0"/><circle cx="12" cy="19.2" r=".8" fill="currentColor"/></symbol>
+      <symbol id="i-battery" viewBox="0 0 28 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="6.5" width="22" height="11" rx="3"/><rect x="3.5" y="8.5" width="15" height="7" rx="1.5" fill="currentColor" stroke="none"/><path d="M25.5 10v4" stroke-linecap="round"/></symbol>
+      <symbol id="i-window" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18"/></symbol>
+      <symbol id="i-menubar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3.5" width="18" height="5" rx="1.5"/><path d="M13 11.5h7v8.5h-7z"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="home-hero">
     <header class="site-header">
-      <nav class="shell nav" aria-label="Primary navigation">
+      <nav class="shell nav" aria-label="Main navigation">
         <a class="brand" href="/en/" aria-label="NanaFlow home"><img src="/assets/nanaflow-icon.png" alt=""><span>NanaFlow</span></a>
-        <div class="nav-links"><a href="#features">Features</a><a href="/en/privacy/">Privacy</a><a href="/en/support/">Support</a><a class="language" href="/" lang="zh-Hans">简体中文</a></div>
+        <div class="nav-links"><a href="#features">Features</a><a href="/en/support/">Support</a><a href="/en/privacy/">Privacy</a><a class="language" href="/" lang="zh-Hans">中文</a><a class="nav-cta" href="https://apps.apple.com/us/app/nanaflow/id6814738160">Download</a></div>
       </nav>
     </header>
 
     <main id="main">
       <section class="shell hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <h1 id="hero-title">Focus, without the complexity.</h1>
-          <p class="lede">NanaFlow is a native macOS focus timer.<br> Start from the menu bar and review progress in one window.</p>
-          <div class="actions">
-            <a class="button" href="https://apps.apple.com/us/app/nanaflow/id6814738160">Download on the Mac App Store</a>
-            <a class="text-link" href="https://github.com/nana-fox/NanaFlow">View on GitHub <span aria-hidden="true">→</span></a>
-          </div>
-          <p class="release-status">macOS 15 or later · Free · No account required</p>
-          <p class="release-status" id="release-status">Version 1.0.1 is available on the Mac App Store. <a href="/en/support/#updates">What's new</a></p>
+        <h1 id="hero-title">Focus, without the complexity.</h1>
+        <p class="lede">NanaFlow is a native macOS focus timer. Start from the menu bar,<br>and see your rhythm in one compact window.</p>
+        <div class="actions">
+          <a class="button" href="https://apps.apple.com/us/app/nanaflow/id6814738160">Download free on the Mac App Store</a>
+          <a class="text-link" href="#features">See features <span aria-hidden="true">↓</span></a>
         </div>
+        <ul class="meta-row" aria-label="At a glance"><li>macOS 15 or later</li><li>Free</li><li>No account</li><li>Data stays on your Mac</li></ul>
+        <p class="release-status" id="release-status">Version 1.0.1 is available on the Mac App Store · <a href="#whats-new">What’s new</a></p>
 
-        <div class="product-stage">
-          <img class="product-shot" src="/assets/nanaflow-timer.png" alt="NanaFlow main window showing 18 minutes and 7 seconds with a pause control">
-          <figure class="menu-callout">
-            <div class="menu-crop"><img src="/assets/nanaflow-menubar.png" alt="NanaFlow showing a 25 minute countdown in the macOS menu bar"></div>
-            <figcaption>Focus controls,<br>always within reach</figcaption>
-          </figure>
+        <div class="scene" role="img" aria-label="Illustration: the macOS menu bar shows a NanaFlow countdown of 18:07 and 3 sessions completed today, with its menu open; the NanaFlow window is timing a focus session">
+          <div class="mac-bar" aria-hidden="true">
+            <div class="mac-bar-left"><b>NanaFlow</b><span>File</span><span>Edit</span><span>Window</span></div>
+            <div class="mac-bar-right"><span class="status-item">18:07<i></i>3</span><svg class="opt"><use href="#i-wifi"/></svg><svg class="opt" style="width:22px"><use href="#i-battery"/></svg><span class="opt">Tue Nov 3 9:41 AM</span></div>
+          </div>
+          <div class="menu-pop" aria-hidden="true">
+            <div class="dim">Focus · 18:07</div>
+            <div><svg><use href="#i-pause"/></svg>Pause</div>
+            <div><svg><use href="#i-timer"/></svg>Hide Timer</div>
+            <div class="hl"><svg><use href="#i-chart"/></svg>Show Statistics</div>
+            <hr>
+            <div><svg><use href="#i-next"/></svg>Skip to Break</div>
+            <div><svg><use href="#i-reset"/></svg>Restart</div>
+            <hr>
+            <div><svg><use href="#i-timer"/></svg>Timer Settings…</div>
+            <div><svg><use href="#i-gear"/></svg>Settings…</div>
+            <div><svg><use href="#i-info"/></svg>About NanaFlow</div>
+            <hr>
+            <div><svg><use href="#i-power"/></svg>Quit NanaFlow</div>
+          </div>
+          <div class="app-window" aria-hidden="true">
+            <div class="win-top"><span class="win-close"><svg><use href="#i-x"/></svg></span><span class="win-tools"><svg><use href="#i-reset"/></svg><svg><use href="#i-chart"/></svg><svg><use href="#i-more"/></svg></span></div>
+            <div class="win-title">NanaFlow</div>
+            <div class="win-time">18:07</div>
+            <div class="win-dots"><i class="done"></i><i class="done"></i><i class="now"></i><i></i></div>
+            <div class="win-play"><svg><use href="#i-pause"/></svg></div>
+          </div>
+          <p class="scene-note" aria-hidden="true">Illustration with sample data</p>
         </div>
       </section>
     </main>
   </div>
 
-  <section class="feature-strip" id="features" aria-label="Core features">
-    <div class="shell feature-grid">
-      <article class="feature"><img class="feature-icon" src="/assets/icons/window.svg" alt=""><h2>One window</h2><p>Timer, statistics, and settings stay simple and close.</p></article>
-      <article class="feature"><img class="feature-icon" src="/assets/icons/menu.svg" alt=""><h2>Menu bar</h2><p>Start or pause in one click without breaking your rhythm.</p></article>
-      <article class="feature"><img class="feature-icon" src="/assets/icons/chart-bar.svg" alt=""><h2>Local data</h2><p>Your focus data stays on your Mac and belongs to you.</p></article>
+  <section class="section" id="features" aria-labelledby="features-title">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Why NanaFlow</p>
+        <h2 id="features-title">Open, start, focus — then get back to work.</h2>
+        <p>No projects, tags or to-do lists to set up first. NanaFlow does one thing — timing your focus — and stays quietly out of the way.</p>
+      </div>
+      <div class="trio">
+        <article class="card"><div class="icon"><svg><use href="#i-window"/></svg></div><h3>One compact window</h3><p>Switch between the timer and statistics in the same small window, without taking over your screen.</p></article>
+        <article class="card"><div class="icon"><svg><use href="#i-menubar"/></svg></div><h3>Always in the menu bar</h3><p>The countdown lives in the menu bar, optionally with today’s completed count. Start, pause and skip are one click away.</p></article>
+        <article class="card"><div class="icon"><svg><use href="#i-lock"/></svg></div><h3>Your data stays on your Mac</h3><p>No sign-up, no ads, no third-party analytics. Focus records and settings are stored locally.</p></article>
+      </div>
     </div>
   </section>
 
-  <footer class="site-footer"><div class="shell footer-row"><span>© 2026 NanaFlow</span><div class="footer-links"><a href="/en/privacy/">Privacy</a><a href="/en/support/">Support</a><a href="https://github.com/nana-fox/NanaFlow">GitHub</a></div></div></footer>
+  <section class="section" aria-labelledby="timer-title">
+    <div class="shell split">
+      <div class="split-copy">
+        <p class="eyebrow">Timer</p>
+        <h2 id="timer-title">A classic rhythm, your way.</h2>
+        <p>25-minute focus, 5-minute short break and 30-minute long break by default. The dots under the timer show where you are in the cycle.</p>
+        <ul class="checks">
+          <li>Pause, resume, skip and restart</li>
+          <li>Optionally auto-start the next focus or break</li>
+          <li>A completion sound and system notification when each phase ends</li>
+          <li>In-app shortcuts: <kbd>Space</kbd> to start or pause, <kbd>⌘</kbd> <kbd>,</kbd> for Settings</li>
+        </ul>
+      </div>
+      <div class="visual" role="img" aria-label="Illustration: the NanaFlow window showing 25:00, ready to start">
+        <div class="app-window" aria-hidden="true">
+          <div class="win-top"><span class="win-close"><svg><use href="#i-x"/></svg></span><span class="win-tools"><svg><use href="#i-reset"/></svg><svg><use href="#i-chart"/></svg><svg><use href="#i-more"/></svg></span></div>
+          <div class="win-title">NanaFlow</div>
+          <div class="win-time">25:00</div>
+          <div class="win-dots"><i class="done"></i><i class="done"></i><i class="now"></i><i></i></div>
+          <div class="win-play"><svg style="margin-left:3px"><use href="#i-play"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="stats-title">
+    <div class="shell split reverse">
+      <div class="split-copy">
+        <p class="eyebrow">Statistics</p>
+        <h2 id="stats-title">See your rhythm.</h2>
+        <p>Click the chart button to switch between day, week, month and year in the same window — 24 hours, 7 days, every day of the month, or 12 months.</p>
+        <ul class="checks">
+          <li>Switch between session count and net focus time</li>
+          <li>Hover over a bar to see its value</li>
+          <li>Only completed focus sessions count — breaks and abandoned sessions don’t</li>
+        </ul>
+      </div>
+      <div class="visual" role="img" aria-label="Illustration: NanaFlow weekly statistics, with 7 sessions on Thursday">
+        <div class="app-window" aria-hidden="true">
+          <svg class="stats-back"><use href="#i-back"/></svg>
+          <div class="stats-seg"><span>D</span><span class="on">W</span><span>M</span><span>Y</span></div>
+          <div class="stats-title">This week · 27</div>
+          <div class="stats-tip">7</div>
+          <div class="stats-bars"><i style="--v:57%"></i><i style="--v:86%"></i><i style="--v:43%"></i><i style="--v:100%"></i><i style="--v:71%"></i><i style="--v:29%"></i><i style="--v:0%"></i></div>
+          <div class="stats-labels"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+          <div class="stats-metric"><span class="on">Count</span><span>Duration</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="sound-title">
+    <div class="shell split">
+      <div class="split-copy">
+        <p class="eyebrow">Sounds</p>
+        <h2 id="sound-title">A different sound for focus and for breaks.</h2>
+        <p>Pick one sound for the end of focus and another for the end of a break, so you know what’s next without looking. 11 built-in sounds, simple volume levels, or none at all.</p>
+      </div>
+      <div class="visual" role="img" aria-label="Illustration: Bowl selected for focus end, Chime for break end">
+        <div class="sound-panel" aria-hidden="true">
+          <div class="sound-row"><h3>Focus ends</h3><div class="chips"><span>Alarm Clock</span><span>Bell</span><span>Bells</span><span class="on">Bowl</span><span>Chime</span><span>Chord</span><span>Harp</span><span>Milestone</span><span>Pulse</span><span>Ripple</span><span>Whistle</span><span>None</span></div></div>
+          <div class="sound-row"><h3>Break ends</h3><div class="chips"><span>Alarm Clock</span><span>Bell</span><span>Bells</span><span>Bowl</span><span class="on">Chime</span><span>Chord</span><span>Harp</span><span>Milestone</span><span>Pulse</span><span>Ripple</span><span>Whistle</span><span>None</span></div></div>
+          <div class="volume">Volume<b></b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="specs-title">
+    <div class="shell">
+      <div class="section-head"><p class="eyebrow">At a glance</p><h2 id="specs-title">Simple, not bare.</h2></div>
+      <div class="specs">
+        <div class="spec"><strong>25 / 5 / 30</strong><span>Default focus, short and long break (minutes)</span></div>
+        <div class="spec"><strong>Day · Week · Month · Year</strong><span>Four statistics views</span></div>
+        <div class="spec"><strong>11 sounds</strong><span>Built in, chosen separately for focus and breaks</span></div>
+        <div class="spec"><strong>No account</strong><span>No sign-up, no ads, no third-party analytics</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="whats-new" aria-labelledby="new-title">
+    <div class="shell whatsnew">
+      <div><p class="eyebrow">Version 1.0.1</p><h2 id="new-title" style="margin:0;font-size:clamp(2rem,3.6vw,2.75rem);letter-spacing:-.04em;line-height:1.15">What’s new</h2><p style="color:var(--body)">Released November 2, 2026. Get it through Mac App Store updates.</p></div>
+      <ul>
+        <li>Statistics can switch between session count and net focus time</li>
+        <li>Separate sounds for focus and breaks, with unified volume levels</li>
+        <li>More reliable end-of-phase notifications, including after reopening the app</li>
+        <li>Refined compact window edges and dragging</li>
+        <li>Improved English menus and version display in About</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="shell">
+      <img src="/assets/nanaflow-icon.png" alt="">
+      <h2 id="cta-title">Start today’s first 25 minutes here.</h2>
+      <p>Free · macOS 15 or later · No account</p>
+      <a class="button" href="https://apps.apple.com/us/app/nanaflow/id6814738160">Download free on the Mac App Store</a>
+    </div>
+  </section>
+
+  <footer class="site-footer"><div class="shell footer-row"><span>© 2026 NanaFlow</span><div class="footer-links"><a href="/en/support/">Support</a><a href="/en/privacy/">Privacy</a><a href="https://github.com/nana-fox/NanaFlow">GitHub</a></div></div></footer>
 </body>
 </html>
